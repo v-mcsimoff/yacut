@@ -28,6 +28,9 @@ paths:
                 Отсутствует обязательное поле:
                   value:
                     message: '"url" является обязательным полем!'
+                Короткая ссылка недопустимой длины:
+                  value: 
+                    message: "custom_id не должен быть длиннее 16 символов"
           description: Not found
       summary: Create Id
   /api/id/{short_id}/:
