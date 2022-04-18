@@ -93,31 +93,6 @@ a.nav-link:hover {
     color: #0AA864;
 }
 
-
-.competentions {
-    background: #717579 url(../img/main-comp-desk-bg.jpg) 0 0 no-repeat;
-    background-size: auto;
-    background-size: 100% auto;
-}
-
-.competentions {
-    color: #fff;
-}
-
-.competentions a {
-    text-decoration: none;
-
-    transition: opacity .3s ease,color .3s ease;
-    color: #fff;
-    font-weight: 700;
-}
-
-.competentions a:hover {
-    color: #6BA3CF;
-    text-decoration: underline;
-}
-
-
 a.regular-link{
     text-decoration: none;
     transition: opacity .3s ease,color .3s ease;
