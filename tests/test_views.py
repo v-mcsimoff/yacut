@@ -1,4 +1,5 @@
 import pytest
+
 from yacut.models import URL_map
 
 py_url = 'https://www.python.org'

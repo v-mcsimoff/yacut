@@ -2,7 +2,10 @@ import sys
 from pathlib import Path
 
 import pytest
+from dotenv import load_dotenv
 from mixer.backend.flask import mixer as _mixer
+
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 sys.path.append(str(BASE_DIR))
@@ -19,6 +22,12 @@ except ImportError as exc:
     if any(obj in exc.name for obj in ['models', 'URL_map']):
         raise AssertionError('В файле models не найдена модель URL_map')
     raise AssertionError('Не обнаружен объект класса SQLAlchemy. Создайте его и назовите db.')
+
+
+@pytest.fixture
+def default_app():
+    with app.app_context():
+        yield app
 
 
 @pytest.fixture
