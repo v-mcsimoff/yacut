@@ -44,6 +44,8 @@ def test_create_empty_body(client):
     ({'url': py_url, 'custom_id': 'Hodor-Hodor'}),
     ({'url': py_url, 'custom_id': 'h@k$r'}),
     ({'url': py_url, 'custom_id': '$'}),
+    ({'url': py_url, 'custom_id': 'п'}),
+    ({'url': py_url, 'custom_id': 'l l'}),
 ])
 def test_invalid_short_url(json_data, client):
     got = client.post('/api/id/', json=json_data)
