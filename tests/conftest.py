@@ -43,6 +43,7 @@ def _app(tmp_path):
         db.create_all()
     yield app
     db.drop_all()
+    db.session.close()
     db_path.unlink()
 
 
