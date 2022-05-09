@@ -4,6 +4,6 @@ def test_404(client):
         'При обращении к несуществующей странице возвращайте статуc-код `404`'
     )
     assert (
-        'Очевидно вы указали идентификатор, для которого в базе данных нет ссылки.'
-        in got.data.decode('utf-8')
+        'If you entered the URL manually please check your spelling and try again.'
+        not in got.data.decode('utf-8')
     ), 'Добавьте обработку обращения к несуществующим страницам. Вам пригодится шаблон 404.html'

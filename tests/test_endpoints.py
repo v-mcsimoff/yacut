@@ -135,7 +135,7 @@ def test_generated_unique_short_id(json_data, client):
     assert unique_id, (
         'При создании короткой ссылки без явно указанного имени '
         'нужно сгенерировать относительную часть ссылки '
-        'из цифр и символов латиницы в lowercase - и сохранить ссылку в базе данных'
+        'из цифр и символов латиницы - и сохранить ссылку в базе данных'
     )
     assert got.json == {
         'url': py_url,
@@ -143,7 +143,7 @@ def test_generated_unique_short_id(json_data, client):
     }, (
         'При создании короткой ссылки без явно указанного имени '
         'нужно сгенерировать относительную часть ссылки '
-        'из цифр и символов латиницы в lowercase - и вернуть ссылку в ответе API.'
+        'из цифр и символов латиницы - и вернуть ссылку в ответе API.'
     )
 
 
@@ -161,7 +161,7 @@ def test_get_url_endpoint(client, short_python_url):
     )
 
 
-def test_get_url_not_fount(client):
+def test_get_url_not_found(client):
     got = client.get('/api/id/{enexpected}/')
     assert got.status_code == 404, (
         'В ответ на GET-запрос для получения несуществующей ссылки '
