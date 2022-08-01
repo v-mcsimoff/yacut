@@ -6,6 +6,11 @@ paths:
   /api/id/:
     post:
       parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/create_id_rec'
       responses:
         '201':
           content:
@@ -71,6 +76,14 @@ components:
       type: object
       description: Получение ссылки по идентификатору
     create_id:
+      properties:
+        url:
+          type: string
+        short_link:
+          type: string
+      type: object
+      description: Генерация новой ссылки
+    create_id_rec:
       properties:
         url:
           type: string
