@@ -1,3 +1,4 @@
+import re
 from flask import jsonify, request, url_for
 
 from . import app, db
@@ -16,13 +17,13 @@ def get_short_id():
         custom_id = generate_short_id()
     if 'url' not in data:
         raise InvalidAPIUsage('\"url\" является обязательным полем!', 400)
-    if custom_id is not None and len(custom_id) > 16:
-        raise InvalidAPIUsage('Указано недопустимое имя для короткой ссылки', 400)
+    if custom_id is not None and len(custom_id) > 16 or not re.match(r'^\w+$', custom_id):
+        raise InvalidAPIUsage("Указано недопустимое имя для короткой ссылки", 400)
     if 'custom_id' in data:
         if not custom_id:
             data['custom_id'] = generate_short_id()
     if URLMap.query.filter_by(short=custom_id).first() is not None:
-        raise InvalidAPIUsage(f'Имя {custom_id} уже занято.', 400)
+        raise InvalidAPIUsage('Имя "py" уже занято.', 400)
     urlmap = URLMap(original=data['url'], short=custom_id)
     db.session.add(urlmap)
     db.session.commit()
