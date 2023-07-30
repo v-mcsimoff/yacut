@@ -17,7 +17,9 @@ def get_short_id():
         custom_id = generate_short_id()
     if 'url' not in data:
         raise InvalidAPIUsage('\"url\" является обязательным полем!', 400)
-    if custom_id is not None and len(custom_id) > 16 or not re.match(r'^\w+$', custom_id):
+    if custom_id is not None and len(custom_id) > 16:
+        raise InvalidAPIUsage("Указано недопустимое имя для короткой ссылки", 400)
+    if custom_id and not re.match(r'^\w+$', custom_id):
         raise InvalidAPIUsage("Указано недопустимое имя для короткой ссылки", 400)
     if 'custom_id' in data:
         if not custom_id:
