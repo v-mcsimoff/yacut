@@ -34,7 +34,7 @@ def get_unique_short_id():
     return render_template('index.html', form=form, **context)
 
 
-@app.route('/<string:short>', methods=('GET',))
+@app.route('/<string:short>')
 def get_original_link(short):
     link = URLMap.query.filter_by(short=short).first_or_404()
-    return redirect(link.original, 200)
+    return redirect(link.original, 302)
