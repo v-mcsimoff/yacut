@@ -23,7 +23,7 @@ def get_unique_short_id():
         return render_template('index.html', form=form)
     short_id = form.custom_id.data
     if short_id and URLMap.query.filter_by(short=short_id).first():
-        flash(f'Ссылка {short_id} уже используется.')
+        flash(f'Имя {short_id} уже занято!')
         return render_template('index.html', form=form)
     if not short_id:
         short_id = generate_short_id()

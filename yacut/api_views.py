@@ -10,19 +10,19 @@ from .error_handlers import InvalidAPIUsage
 def get_short_id():
     data = request.get_json()
     if data is None:
-        raise InvalidAPIUsage('Отсутствует тело запроса', 404)
+        raise InvalidAPIUsage('Отсутствует тело запроса', 400)
     custom_id = data.get('custom_id')
     if custom_id is None:
         custom_id = generate_short_id()
     if 'url' not in data:
-        raise InvalidAPIUsage('Поле "url" является обязательным', 404)
+        raise InvalidAPIUsage('Поле "url" является обязательным', 400)
     if custom_id is not None and len(custom_id) > 16:
-        raise InvalidAPIUsage('Указано некорректное имя для короткой ссылки', 404)
+        raise InvalidAPIUsage('Указано некорректное имя для короткой ссылки', 400)
     if 'custom_id' in data:
         if not custom_id:
             data['custom_id'] = generate_short_id()
     if URLMap.query.filter_by(short=custom_id).first() is not None:
-        raise InvalidAPIUsage(f'Ссылка {custom_id} уже используется.', 404)
+        raise InvalidAPIUsage(f'Имя {custom_id} уже занято!', 400)
     urlmap = URLMap(original=data['url'], short=custom_id)
     db.session.add(urlmap)
     db.session.commit()
@@ -43,5 +43,5 @@ def get_short_id():
 def get_original_url(short_id):
     link = URLMap.query.filter_by(short=short_id).first()
     if link is None:
-        raise InvalidAPIUsage('id не найден', 404)
+        raise InvalidAPIUsage('Указанный id не найден', 404)
     return jsonify({'url': link.original})
