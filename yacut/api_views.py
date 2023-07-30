@@ -28,12 +28,12 @@ def get_short_id():
     db.session.commit()
     return (
         jsonify(
-        {
-            'url': urlmap.original,
-            'short_link': url_for(
-                'get_original_link', short=urlmap.short, _external=True
-            ),
-        }
+            {
+                'url': urlmap.original,
+                'short_link': url_for(
+                    'get_original_link', short=urlmap.short, _external=True
+                ),
+            }
         ),
         201,
     )
@@ -45,4 +45,3 @@ def get_original_url(short_id):
     if link is None:
         raise InvalidAPIUsage('id не найден', 404)
     return jsonify({'url': link.original})
-    
