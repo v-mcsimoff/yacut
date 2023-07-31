@@ -8,12 +8,15 @@ from .forms import URLMapForm
 from .models import URLMap
 
 
+SHORT_ID_LENGTH = 6
+
+
 def generate_short_id():
-    items = string.ascii_letters + string.digits
-    short_id = "".join(choice(items) for i in range(6))
-    if URLMap.query.filter_by(short=short_id).first():
-        return generate_short_id()
-    return short_id
+    characters = string.ascii_letters + string.digits
+    while True:
+        short_id = "".join(choice(characters) for i in range(SHORT_ID_LENGTH))
+        if not URLMap.query.filter_by(short=short_id).first():
+            return short_id
 
 
 @app.route('/', methods=('GET', 'POST'))
