@@ -51,9 +51,9 @@ pip install -r requirements.txt
 
 ### Technologies
 
-- Python
-- SQLAlchemy
-- Flask
+- Python 3.9
+- SQLAlchemy 1.4
+- Flask 2.2
 
 ### Author
 Vladimir Maksimov
