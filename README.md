@@ -1,17 +1,17 @@
 # Yacut
 
-Сервис укорачивания ссылок
+Link shortening service
 
-### Описание:
+### Description:
 
-YaCut ассоциирует длинную пользовательскую ссылку с короткой, которую предлагает сам пользователь или предоставляет сервис.
-При переходе по короткой ссылке происходит переадресация на исходный адрес.
+YaCut associates a long user link with a short link provided by the user or a service.
+Clicking on the short link redirects to the original address.
 
-Доступ к сервису предоставляется как с помощью графического интерфейса веб страницы, так и через API.
+Access to the service is provided both through the graphical interface of the web page and through the API.
 
-### Запуск проекта
+### Project launch
 
-Клонировать репозиторий и перейти в него в командной строке:
+Clone the repository and access it in the terminal:
 
 ```
 git clone 
@@ -21,25 +21,25 @@ git clone
 cd yacut
 ```
 
-Cоздать и активировать виртуальное окружение:
+Create and activate the virtual environment:
 
 ```
 python3 -m venv venv
 ```
 
-* Если у вас Linux/macOS
+* For Linux/MacOS
 
     ```
     source venv/bin/activate
     ```
 
-* Если у вас windows
+* For Windows
 
     ```
     source venv/scripts/activate
     ```
 
-Установить зависимости из файла requirements.txt:
+Install dependencies from requirements.txt:
 
 ```
 python3 -m pip install --upgrade pip
@@ -49,11 +49,11 @@ python3 -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### Используемые технологии
+### Technologies
 
 - Python
 - SQLAlchemy
 - Flask
 
-### Автор
-Владимир Максимов
+### Author
+Vladimir Maksimov
